@@ -220,6 +220,17 @@ ul.nostyle i {
     background-color: transparent;
   }
 }
+
+/* Center navbar items */
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-center {
+  float: none;
+  display: inline-block;
+}
+
 #main-slider {
   overflow: hidden;
 }
