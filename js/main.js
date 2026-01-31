@@ -218,21 +218,24 @@ jQuery(function($) {'use strict';
 	});
 
 	//Google Map
-	var latitude = $('#google-map').data('latitude');
-	var longitude = $('#google-map').data('longitude');
-	function initialize_map() {
-		var myLatlng = new google.maps.LatLng(latitude,longitude);
-		var mapOptions = {
-			zoom: 14,
-			scrollwheel: false,
-			center: myLatlng
-		};
-		var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: map
-		});
+	// Only initialize map if Google Maps API is loaded and map element exists
+	if (typeof google !== 'undefined' && $('#google-map').length > 0) {
+		var latitude = $('#google-map').data('latitude');
+		var longitude = $('#google-map').data('longitude');
+		function initialize_map() {
+			var myLatlng = new google.maps.LatLng(latitude,longitude);
+			var mapOptions = {
+				zoom: 14,
+				scrollwheel: false,
+				center: myLatlng
+			};
+			var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map
+			});
+		}
+		google.maps.event.addDomListener(window, 'load', initialize_map);
 	}
-	google.maps.event.addDomListener(window, 'load', initialize_map);
 
 });
