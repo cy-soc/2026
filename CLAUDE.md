@@ -11,13 +11,15 @@ This is a static workshop website for the CySoc 2026 (International Workshop on 
 ### Core Structure
 - **Single-page application**: All content is in `index.html` with anchor-based navigation
 - **Static site**: No build process required - the site runs directly from HTML/CSS/JS files
-- **Dynamic PC list**: Program Committee members are loaded client-side from a JSONL data file
+- **Dynamic lists**: Both PC members and organizers are loaded client-side from JSONL data files
 
 ### Key Files
 - `index.html`: Complete workshop website with all sections (about, dates, program, organizers, etc.)
 - `data/cysoc_pc_list_confirmed.jsonl`: Program Committee members data (auto-generated)
+- `data/organizers.jsonl`: Workshop organizers data (manually maintained)
 - `js/load_pc_list.js`: Custom script that loads PC members from JSONL and renders them
-- `script/generate_confirmed_pc_file.py`: Python script to generate the JSONL from a CSV
+- `js/load_organizers.js`: Custom script that loads organizers from JSONL and renders them
+- `script/generate_confirmed_pc_file.py`: Python script to generate the PC JSONL from a CSV
 
 ### Data Flow for PC Members
 1. Maintain PC members in a CSV file (typically from Google Sheets) with columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`
@@ -25,12 +27,30 @@ This is a static workshop website for the CySoc 2026 (International Workshop on 
 3. The JSONL file contains only confirmed members (where `accepted_on_easychair` is true)
 4. On page load, `js/load_pc_list.js` fetches and renders this data into the PC list section
 
+### Data Format for Organizers
+The `data/organizers.jsonl` file contains one JSON object per line with the following fields:
+```json
+{
+  "name": "Full Name",
+  "affiliation": "Institution, Location",
+  "email": "email@example.com",
+  "photo": "images/team/photo.jpg",
+  "twitter": "https://twitter.com/username" or null,
+  "linkedin": "https://linkedin.com/in/username" or null,
+  "website": "https://example.com" or null
+}
+```
+On page load, `js/load_organizers.js` fetches and renders organizers in rows of 4.
+
 ## Common Development Tasks
 
 ### Updating Content
 - All text content is directly in `index.html` - edit there
-- Update dates, program schedule, organizers by modifying the HTML
-- Note: The title still says "CySoc 2025" and content references 2025 - these need updating to 2026
+- Update dates, program schedule, and other static content in the HTML
+- Organizers and PC members are managed via JSONL data files (see below)
+
+### Updating Organizers
+Edit `data/organizers.jsonl` directly - each line is a JSON object with organizer information. To reorder organizers, simply rearrange the lines in the file. The website will automatically reflect the new order.
 
 ### Updating Program Committee
 ```bash
