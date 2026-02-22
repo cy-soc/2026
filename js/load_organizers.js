@@ -8,6 +8,7 @@
  *   "email": "email@example.com",
  *   "photo": "images/team/photo.jpg",
  *   "twitter": "https://twitter.com/username" or null,
+ *   "bluesky": "https://bsky.app/profile/username" or null,
  *   "linkedin": "https://linkedin.com/in/username" or null,
  *   "website": "https://example.com" or null
  * }
@@ -69,6 +70,10 @@ function renderOrganizerCard(org) {
 
     if (org.twitter) {
         socialIcons += `<li><a href="${org.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
+    }
+
+    if (org.bluesky) {
+        socialIcons += `<li><a href="${org.bluesky}" target="_blank"><i class="fa-brands fa-bluesky"></i></a></li>`;
     }
 
     if (org.linkedin) {
