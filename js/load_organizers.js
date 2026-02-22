@@ -69,7 +69,7 @@ function renderOrganizerCard(org) {
     let socialIcons = '<ul class="social-icons">';
 
     if (org.twitter) {
-        socialIcons += `<li><a href="${org.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
+        socialIcons += `<li><a href="${org.twitter}" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>`;
     }
 
     if (org.bluesky) {
@@ -77,7 +77,7 @@ function renderOrganizerCard(org) {
     }
 
     if (org.linkedin) {
-        socialIcons += `<li><a href="${org.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
+        socialIcons += `<li><a href="${org.linkedin}" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>`;
     }
 
     if (org.website) {
