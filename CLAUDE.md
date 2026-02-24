@@ -55,10 +55,16 @@ Edit `data/organizers.jsonl` directly - each line is a JSON object with organize
 ### Updating Program Committee
 ```bash
 # Generate JSONL from CSV (CSV should have the columns mentioned above)
-python script/generate_confirmed_pc_file.py path/to/pc_members.csv
+uv run python script/generate_confirmed_pc_file.py path/to/pc_members.csv
 
 # The script outputs to data/cysoc_pc_list_confirmed.jsonl by default
-# Or specify output: python script/generate_confirmed_pc_file.py input.csv -o output.jsonl
+# Or specify output: uv run python script/generate_confirmed_pc_file.py input.csv -o output.jsonl
+```
+
+### Setup
+This project uses [uv](https://docs.astral.sh/uv/) for Python dependency management. To install dependencies:
+```bash
+uv sync
 ```
 
 ### Local Development
