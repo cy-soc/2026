@@ -1,0 +1,9 @@
+[project]
+name = "cysoc-2026-website"
+version = "0.1.0"
+description = "CySoc 2026 - International Workshop on Cyber Social Threats"
+requires-python = ">=3.10"
+dependencies = ["pandas"]
+
+[project.scripts]
+generate-pc = "script.generate_confirmed_pc_file:main"
