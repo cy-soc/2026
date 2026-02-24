@@ -27,7 +27,7 @@ python -m http.server 8000
 - **Organizers**: Edit `data/organizers.jsonl` (one JSON object per line).
 - **Program Committee**: Generate from a CSV exported from Google Sheets:
   ```bash
-  uv run python script/generate_confirmed_pc_file.py path/to/pc_members.csv
+  uv run script/generate_confirmed_pc_file.py path/to/pc_members.csv -o data/cysoc_pc_list_confirmed.jsonl
   ```
   The CSV should have columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`. The script filters to confirmed members and outputs `data/cysoc_pc_list_confirmed.jsonl`.
 
