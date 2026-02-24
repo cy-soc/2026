@@ -10,9 +10,10 @@ Author: Matthew DeVerna
 """
 
 import argparse
-import pandas as pd
 import json
 import os
+
+import pandas as pd
 
 
 def main():
@@ -30,8 +31,7 @@ def main():
     df = pd.read_csv(args.filepath)
     pd.set_option("future.no_silent_downcasting", True)
     # Filter rows where folks have accepted the invitation (column is boolean)
-    df["accepted_on_easychair"] = df["accepted_on_easychair"].fillna(False).astype(bool)
-    confirmed_df = df[df["accepted_on_easychair"]].copy()
+    confirmed_df = df[df["accepted_on_easychair"] == "TRUE"].copy()
     # Sort by first name alphabetically (ignoring case)
     confirmed_df = confirmed_df.sort_values(
         by="name",
@@ -39,6 +39,7 @@ def main():
             lambda x: x.split()[0].lower() if x.strip() else ""
         ),
     )
+    print(f"Found {len(confirmed_df)} confirmed PC members")
 
     # Determine output file path
     output_path = (
