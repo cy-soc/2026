@@ -1,7 +1,8 @@
 """
 Purpose: Generate a JSONL file for the CySoc website.
 
-Input: CSV file with columns named "response", "name", "field", "affiliation", "website".
+Input: CSV file with columns named "response", "name", "field", "affiliation", "website",
+    "accepted_on_easychair", and "missing_reviews".
     - This should be the output of the Shared Google Sheets document.
 
 Output: Write a JSONL file containing the confirmed individuals' data.
@@ -16,6 +17,12 @@ import os
 import pandas as pd
 
 
+def is_true(value):
+    if pd.isna(value):
+        return False
+    return str(value).strip().upper() == "TRUE"
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Create JSONL of confirmed individuals from CSV"
@@ -28,10 +35,12 @@ def main():
     )
     args = parser.parse_args()
 
-    df = pd.read_csv(args.filepath)
-    pd.set_option("future.no_silent_downcasting", True)
-    # Filter rows where folks have accepted the invitation (column is boolean)
-    confirmed_df = df[df["accepted_on_easychair"] == "TRUE"].copy()
+    df = pd.read_csv(args.filepath, dtype=str, keep_default_na=False)
+    # Only include members who accepted on EasyChair and completed their reviews.
+    confirmed_df = df[
+        df["accepted_on_easychair"].apply(is_true)
+        & ~df["missing_reviews"].apply(is_true)
+    ].copy()
     # Sort by first name alphabetically (ignoring case)
     confirmed_df = confirmed_df.sort_values(
         by="name",

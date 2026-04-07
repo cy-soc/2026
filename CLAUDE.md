@@ -22,9 +22,9 @@ This is a static workshop website for the CySoc 2026 (International Workshop on 
 - `script/generate_confirmed_pc_file.py`: Python script to generate the PC JSONL from a CSV
 
 ### Data Flow for PC Members
-1. Maintain PC members in a CSV file (typically from Google Sheets) with columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`
+1. Maintain PC members in a CSV file (typically from Google Sheets) with columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`, `missing_reviews`
 2. Run `python script/generate_confirmed_pc_file.py <csv_file>` to generate the JSONL file
-3. The JSONL file contains only confirmed members (where `accepted_on_easychair` is true)
+3. The JSONL file contains only confirmed members who completed their assigned reviews (`accepted_on_easychair` is true and `missing_reviews` is not true)
 4. On page load, `js/load_pc_list.js` fetches and renders this data into the PC list section
 
 ### Data Format for Organizers

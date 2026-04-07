@@ -29,7 +29,7 @@ python -m http.server 8000
   ```bash
   uv run script/generate_confirmed_pc_file.py path/to/pc_members.csv -o data/cysoc_pc_list_confirmed.jsonl
   ```
-  The CSV should have columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`. The script filters to confirmed members and outputs `data/cysoc_pc_list_confirmed.jsonl`.
+  The CSV should have columns: `response`, `name`, `field`, `affiliation`, `website`, `accepted_on_easychair`, `missing_reviews`. The script filters to confirmed members who completed their assigned reviews and outputs `data/cysoc_pc_list_confirmed.jsonl`.
 
 ## Publishing
 
