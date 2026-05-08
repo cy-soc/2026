@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static workshop website for the CySoc 2026 (International Workshop on Cyber Social Threats) conference. The site is a single-page HTML application built with Bootstrap 3, jQuery, and various plugins for animations and UI effects. It will be hosted on GitHub Pages at https://cy-soc.github.io/2026/.
+This is a static workshop website for the CySoc 2026 (International Workshop on Cyber Social Threats) conference. The site is a single-page HTML application built with Bootstrap 3, jQuery, and various plugins for animations and UI effects. It is hosted on GitHub Pages at https://cy-soc.github.io/2026/.
 
 ## Architecture
 
@@ -87,14 +87,6 @@ git push origin main
 GitHub Pages will automatically serve from the `main` branch.
 
 ## Important Notes
-
-### Year References
-The current code still contains multiple references to "2025" that need to be updated to "2026":
-- Page title in `<title>` tag (line 9)
-- Main heading "CySoc 2025" (line 86)
-- Footer copyright (line 841)
-- Event dates and locations
-- Navigation links to previous years
 
 ### CSS and Dependencies
 - Uses Bootstrap 3 (not the latest version)
